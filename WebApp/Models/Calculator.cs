@@ -1,17 +1,13 @@
 namespace WebApp.Models;
 
-public class Calculator
-{
+public class Calculator {
     public Operator? Operator { get; set; }
     public double? X { get; set; }
     public double? Y { get; set; }
 
-    public string Op
-    {
-        get
-        {
-            return Operator switch
-            {
+    public string Op {
+        get {
+            return Operator switch {
                 Models.Operator.ADD => "+",
                 Models.Operator.SUB => "−",
                 Models.Operator.MUL => "×",
@@ -23,17 +19,14 @@ public class Calculator
         }
     }
 
-    public bool IsValid()
-    {
+    public bool IsValid() {
         return Operator != null &&
                X != null &&
                (Y != null || Operator == Models.Operator.SIN);
     }
 
-    public double Calculate()
-    {
-        return Operator switch
-        {
+    public double Calculate() {
+        return Operator switch {
             Models.Operator.ADD => (double)(X + Y)!,
             Models.Operator.SUB => (double)(X - Y)!,
             Models.Operator.MUL => (double)(X * Y)!,
@@ -45,8 +38,7 @@ public class Calculator
     }
 }
 
-public enum Operator
-{
+public enum Operator {
     ADD,
     SUB,
     MUL,

@@ -1,0 +1,28 @@
+@model Dictionary<int, ContactModel>
+
+<h2>Kontakty</h2>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var contact in Model) {
+        <tr>
+            <td>@contact.Value.Name</td>
+            <td>@contact.Value.Surname</td>
+            @* <td>@contact.Value.PhoneNumber</td> *@
+            @* <td>@contact.Value.Email</td> *@
+            <td>
+                <a class="btn btn-success" asp-controller="Contact" asp-action="Edit">Edycja</a>
+                <a class="btn btn-info" asp-controller="Contact" asp-action="Details" asp-route-id=@contact.Key>Szczegóły</a>
+                <a class="btn btn-danger" asp-controller="Contact" asp-action="Delete" asp-route-id=@contact.Key>Usuń</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+<h2>Dodaj kontakt</h2>
+<a class="btn btn-primary" asp-action="Add" asp-controller="Contact">Dodaj kontakt</a>
