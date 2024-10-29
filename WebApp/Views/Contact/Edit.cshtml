@@ -1,7 +1,7 @@
-@model ContactModel
+﻿@model ContactModel
 
-<h2>Dodawanie kontaktu</h2>
-<form asp-action="Add" asp-controller="Contact" method="POST">
+<h2>Edytowanie kontaktu</h2>
+<form asp-action="Edit" asp-controller="Contact" method="POST">
     <div class="mb-3">
         <label asp-for="Name" class="form-label text-dark"></label>
         <input asp-for="Name" class="form-control"/>
@@ -35,7 +35,7 @@
         <span asp-validation-for="Category" class="text-danger"></span>
     </div>
     <div class="mb-3">
-        <button type="submit" class="btn btn-primary">Dodaj</button>
+        <button type="submit" class="btn btn-primary">Edytuj</button>
         @* @Html.HiddenFor(model => model.Id) *@
     </div>
 </form>
