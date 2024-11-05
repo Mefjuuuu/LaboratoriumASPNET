@@ -1,0 +1,25 @@
+@model Dictionary<int, WebApp.Models.Travel>
+
+<h2>Lista podróży</h2>
+<table class="table">
+    <tr>
+        <th>Nazwa</th>
+        <th>Data rozpoczęcia</th>
+        <th>Data zakończenia</th>
+        <th>Akcje</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Value.Name</td>
+            <td>@item.Value.StartDate.ToShortDateString()</td>
+            <td>@item.Value.EndDate.ToShortDateString()</td>
+            <td>
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Value.Id">Edytuj</a>
+                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Value.Id">Szczegóły</a>
+                <a class="btn btn-primary" asp-action="Delete" asp-route-id="@item.Value.Id">Usuń</a>
+            </td>
+        </tr>
+    }
+</table>
+<a class="btn btn-primary" asp-action="Create">Dodaj nową podróż</a>

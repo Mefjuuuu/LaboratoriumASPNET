@@ -1,0 +1,10 @@
+@model WebApp.Models.Travel
+
+<h2>Usuń podróż</h2>
+<p>Czy na pewno chcesz usunąć podróż: <strong>@Model.Name</strong>?</p>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Usuń</button>
+    <a class="btn btn-secondary" asp-action="Index">Anuluj</a>
+</form>

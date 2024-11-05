@@ -1,0 +1,42 @@
+@model WebApp.Models.Travel
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="All"></div>
+    <div>
+        <label asp-for="Name">Nazwa</label>
+        <input class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="StartDate">Data rozpoczęcia</label>
+        <input class="form-control" asp-for="StartDate" type="date" />
+        <span asp-validation-for="StartDate" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="EndDate">Data zakończenia</label>
+        <input class="form-control" asp-for="EndDate" type="date" />
+        <span asp-validation-for="EndDate" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="StartLocation">Miejsce początkowe</label>
+        <input class="form-control" asp-for="StartLocation" />
+        <span asp-validation-for="StartLocation" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="EndLocation">Miejsce końcowe</label>
+        <input class="form-control" asp-for="EndLocation" />
+        <span asp-validation-for="EndLocation" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Participants">Uczestnicy</label>
+        <input class="form-control" asp-for="Participants" />
+        <span asp-validation-for="Participants" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Guide">Przewodnik</label>
+        <input class="form-control" asp-for="Guide" />
+        <span asp-validation-for="Guide" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+</form>
