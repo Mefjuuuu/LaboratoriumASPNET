@@ -28,6 +28,6 @@ public class EFContantService : IContactService {
     }
 
     public ContactModel? GetById(int id) {
-        throw new NotImplementedException();
+        return ContactMapper.ToModel(_context.Type.Find(id)!);
     }
 }

@@ -12,9 +12,6 @@ public class AppDbContext : DbContext {
         DbPath = Path.Join(path, "contacts.db");
     }
 
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {
-    }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         modelBuilder.Entity<ContactEntity>().ToTable("contacts").HasData(
             new ContactEntity() {
