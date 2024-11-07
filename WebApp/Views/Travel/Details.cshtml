@@ -1,0 +1,12 @@
+@model WebApp.Models.Travel
+
+<h2>Szczegóły podróży</h2>
+<p><strong>Nazwa:</strong> @Model.Name</p>
+<p><strong>Data rozpoczęcia:</strong> @Model.StartDate.ToShortDateString()</p>
+<p><strong>Data zakończenia:</strong> @Model.EndDate.ToShortDateString()</p>
+<p><strong>Miejsce początkowe:</strong> @Model.StartLocation</p>
+<p><strong>Miejsce końcowe:</strong> @Model.EndLocation</p>
+<p><strong>Uczestnicy:</strong> @Model.Participants</p>
+<p><strong>Przewodnik:</strong> @Model.Guide</p>
+
+<a class="btn btn-primary" asp-action="Index">Powrót do listy</a>

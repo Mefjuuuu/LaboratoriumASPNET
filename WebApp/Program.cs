@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using WebApp.Models;
 using WebApp.Models.services;
 
 namespace WebApp;
@@ -9,7 +11,8 @@ public class Program {
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
-        builder.Services.AddSingleton<IContactService, MemoryContactService>();
+        builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite("Data Source=contacts.db"));
+        builder.Services.AddTransient<IContactService, EFContantService>();
 
         var app = builder.Build();
 
@@ -19,7 +22,7 @@ public class Program {
             // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
         }
-
+ 
         app.UseHttpsRedirection();
         app.UseStaticFiles();
 
