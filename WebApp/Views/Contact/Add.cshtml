@@ -34,6 +34,12 @@
         <select class="form-control" asp-for="Category" asp-items="@Html.GetEnumSelectList<Category>()"></select>
         <span asp-validation-for="Category" class="text-danger"></span>
     </div>
+
+    <div class="mb-3">
+        <label asp-for="OrganizationId" class="form-label text-dark"></label>
+        <select class="form-select" asp-for="OrganizationId" asp-items="@Model.Organizations"></select>
+        <span asp-validation-for="OrganizationId" class="text-danger"></span>
+    </div>
     <div class="mb-3">
         <button type="submit" class="btn btn-primary">Dodaj</button>
         @* @Html.HiddenFor(model => model.Id) *@

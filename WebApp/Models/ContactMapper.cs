@@ -10,7 +10,9 @@ public class ContactMapper {
             PhoneNumber = model.PhoneNumber,
             BirthDate = model.BirthDate,
             Category = model.Category,
-            Created = DateTime.Now
+            Created = DateTime.Now,
+            Organization = model.Organization,
+            OrganizationId = model.OrganizationId
         };
     }
     
@@ -22,7 +24,9 @@ public class ContactMapper {
             Email = entity.Email,
             PhoneNumber = entity.PhoneNumber,
             BirthDate = entity.BirthDate,
-            Category = entity.Category
+            Category = entity.Category,
+            Organization = entity.Organization,
+            OrganizationId = entity.OrganizationId
         };
     }
 }
