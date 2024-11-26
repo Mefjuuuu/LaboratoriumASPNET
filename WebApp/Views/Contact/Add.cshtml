@@ -1,47 +1,48 @@
-@model ContactModel
+﻿@model ContactModel
 
-<h2>Dodawanie kontaktu</h2>
-<form asp-action="Add" asp-controller="Contact" method="POST">
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Dodaj kontakt</h2>
+<form asp-action="Add" asp-controller="Contact" method="post">
     <div class="mb-3">
-        <label asp-for="Name" class="form-label text-dark"></label>
-        <input asp-for="Name" class="form-control"/>
-        <span asp-validation-for="Name" class="text-danger"></span>
+        <label class="form-label" asp-for="Name">Imie</label>
+        <input class="form-control" asp-for="Name"/>
+        <span class="text-danger" asp-validation-for="Name"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="Surname" class="form-label text-dark"></label>
-        <input asp-for="Surname" class="form-control"/>
-        <span asp-validation-for="Surname" class="text-danger"></span>
+        <label class="form-label" asp-for="Surname">Nazwisko</label>
+        <input class="form-control" asp-for="Surname"/>
+        <span class="text-danger" asp-validation-for="Surname"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="PhoneNumber" class="form-label text-dark"></label>
-        <input asp-for="PhoneNumber" class="form-control"/>
-        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        <label class="form-label" asp-for="Email">Email</label>
+        <input class="form-control" asp-for="Email"/>
+        <span class="text-danger" asp-validation-for="Email"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="Email" class="form-label text-dark"></label>
-        <input asp-for="Email" class="form-control"/>
-        <span asp-validation-for="Email" class="text-danger"></span>
+        <label class="form-label" asp-for="PhoneNumber">Numer telefonu</label>
+        <input class="form-control" asp-for="PhoneNumber"/>
+        <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="BirthDate">Data urodzenia</label>
+        <input class="form-control" asp-for="BirthDate"/>
+        <span class="text-danger" asp-validation-for="BirthDate"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Category">Kategoria</label>
+        <select class="form-control" asp-for="Category" asp-items="@Html.GetEnumSelectList<Category>()"></select>
+        <span class="text-danger" asp-validation-for="Category"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" asp-for="OrganizationId">Organizacja</label>
+        <select class="form-select" asp-for="OrganizationId" asp-items="@Model.Organizations"></select>
+        <span class="text-danger" asp-validation-for="OrganizationId"></span>
     </div>
     
-    <div class="mb-3">
-        <label asp-for="BirthDate" class="form-label text-dark"></label>
-        <input asp-for="BirthDate" class="form-control"/>
-        <span asp-validation-for="BirthDate" class="text-danger"></span>
-    </div>
-
-    <div class="mb-3">
-        <label asp-for="Category" class="form-label text-dark"></label>
-        <select class="form-control" asp-for="Category" asp-items="@Html.GetEnumSelectList<Category>()"></select>
-        <span asp-validation-for="Category" class="text-danger"></span>
-    </div>
-
-    <div class="mb-3">
-        <label asp-for="OrganizationId" class="form-label text-dark"></label>
-        <select class="form-select" asp-for="OrganizationId" asp-items="@Model.Organizations"></select>
-        <span asp-validation-for="OrganizationId" class="text-danger"></span>
-    </div>
-    <div class="mb-3">
-        <button type="submit" class="btn btn-primary">Dodaj</button>
-        @* @Html.HiddenFor(model => model.Id) *@
-    </div>
+    <button class="btn btn-outline-primary" type="submit">Zapisz</button>
 </form>
