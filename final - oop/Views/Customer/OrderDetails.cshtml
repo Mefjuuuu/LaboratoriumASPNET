@@ -1,0 +1,53 @@
+@model WebApplication3.Models.Cust_order
+
+@{
+    ViewData["Title"] = "Order Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Order Details</h1>
+
+<p>
+    <strong>Order ID:</strong> @Model.order_id <br />
+    <strong>Order Date:</strong> @Model.order_date?.ToString("yyyy-MM-dd")<br />
+    <strong>Current Status:</strong> 
+    @Model.order_histories.OrderByDescending(h => h.status_date).FirstOrDefault()?.status_id
+</p>
+
+@if (Model.order_histories.OrderByDescending(h => h.status_date).FirstOrDefault()?.status_id < 4)
+{
+    <form asp-action="UpdateStatus" method="post">
+        <input type="hidden" name="order_id" value="@Model.order_id" />
+        <label for="new_status">Change Status:</label>
+        <select name="new_status" id="new_status" class="form-control">
+            <option value="1">Pending</option>
+            <option value="2">Processing</option>
+            <option value="3">Shipped</option>
+            <option value="4">Completed</option>
+        </select>
+        <button type="submit" class="btn btn-primary mt-2">Update Status</button>
+    </form>
+}
+else
+{
+    <p>Status cannot be updated (status is already 4 or higher).</p>
+}
+
+<h3>Order History</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Status</th>
+        <th>Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var history in Model.order_histories.OrderByDescending(h => h.status_date))
+    {
+        <tr>
+            <td>@history.status_id</td>
+            <td>@history.status_date</td>
+        </tr>
+    }
+    </tbody>
+</table>
