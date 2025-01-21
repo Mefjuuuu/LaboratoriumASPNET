@@ -1,0 +1,30 @@
+@model IEnumerable<WebApplication3.Models.Cust_order>
+
+@{
+    ViewData["Title"] = "Customer Orders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Customer Orders</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Order ID</th>
+        <th>Order Date</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var order in Model)
+    {
+        <tr>
+            <td>@order.order_id</td>
+            <td>@order.order_date</td>
+            <td>
+                <a asp-action="OrderDetails" asp-route-id="@order.order_id">View Details</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
