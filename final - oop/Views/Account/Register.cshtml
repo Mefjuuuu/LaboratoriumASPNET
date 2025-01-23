@@ -1,8 +1,8 @@
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Register";
 }
 
-<h2>Login</h2>
+<h2>Register</h2>
 
 @if (ViewBag.Error != null)
 {
@@ -11,7 +11,7 @@
     </div>
 }
 
-<form asp-action="Login" method="post">
+<form asp-action="Register" method="post">
     <div class="form-group">
         <label for="username">Username</label>
         <input type="text" id="username" name="username" class="form-control" required />
@@ -20,6 +20,5 @@
         <label for="password">Password</label>
         <input type="password" id="password" name="password" class="form-control" required />
     </div>
-    <button type="submit" class="btn btn-primary">Login</button>
-    <a class="btn btn-primary" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+    <button type="submit" class="btn btn-primary">Register</button>
 </form>

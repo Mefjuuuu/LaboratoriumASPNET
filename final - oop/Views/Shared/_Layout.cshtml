@@ -25,11 +25,40 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Index">Customers</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
-                    </li>
+
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <li>
+                            <a class="nav-link text-dark" asp-controller="Account" asp-action="ManageUsers">Manage Users</a>
+                        </li>
+                    }
+                </ul>
+
+
+            </div>
+            <div>
+                <ul class="navbar-nav flex-grow-1">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" class="form-inline">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="nav-link btn btn-link text-dark" style="border: none; background: none; cursor: pointer;">Logout</button>
+                                <span class="nav-link text-dark">@User.Identity.Name</span>
+                            </form>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <!-- Login and Register links -->
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                        </li>
+                    }
                 </ul>
             </div>
+            
         </div>
     </nav>
 </header>
